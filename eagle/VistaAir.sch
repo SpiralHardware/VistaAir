@@ -3028,6 +3028,11 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <wire x1="58.42" y1="83.82" x2="66.04" y2="83.82" width="0.1524" layer="91"/>
 <label x="68.58" y="83.82" size="1.778" layer="95"/>
 </segment>
+<segment>
+<wire x1="114.3" y1="50.8" x2="111.76" y2="53.34" width="0.1524" layer="91"/>
+<label x="106.68" y="53.34" size="1.778" layer="95"/>
+<pinref part="B2" gate="G$1" pin="13"/>
+</segment>
 </net>
 <net name="CCL1" class="0">
 <segment>
@@ -3172,14 +3177,14 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <label x="119.38" y="2.54" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="33.02" y1="71.12" x2="25.4" y2="71.12" width="0.1524" layer="91"/>
-<label x="17.78" y="71.12" size="1.778" layer="95"/>
-<pinref part="B1" gate="G$1" pin="VIN"/>
-</segment>
-<segment>
 <wire x1="114.3" y1="38.1" x2="109.22" y2="38.1" width="0.1524" layer="91"/>
 <label x="101.6" y="38.1" size="1.778" layer="95"/>
 <pinref part="B2" gate="G$1" pin="VUSB@2"/>
+</segment>
+<segment>
+<pinref part="B1" gate="G$1" pin="5V"/>
+<wire x1="33.02" y1="68.58" x2="27.94" y2="68.58" width="0.1524" layer="91"/>
+<label x="22.86" y="68.58" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LIMTOPA" class="0">
@@ -3288,13 +3293,6 @@ This footprint was designed to help hold the alignment of a through-hole compone
 <wire x1="139.7" y1="50.8" x2="147.32" y2="50.8" width="0.1524" layer="91"/>
 <label x="152.4" y="50.8" size="1.778" layer="95"/>
 <pinref part="B2" gate="G$1" pin="17"/>
-</segment>
-</net>
-<net name="CWL2" class="0">
-<segment>
-<wire x1="114.3" y1="50.8" x2="111.76" y2="53.34" width="0.1524" layer="91"/>
-<label x="106.68" y="53.34" size="1.778" layer="95"/>
-<pinref part="B2" gate="G$1" pin="13"/>
 </segment>
 </net>
 </nets>
