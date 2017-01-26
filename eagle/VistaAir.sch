@@ -316,16 +316,16 @@ No holes, no ICSP connections.
 <pad name="P$2" x="1.27" y="3.81" drill="0.508" diameter="1.016"/>
 <pad name="P$3" x="1.27" y="2.54" drill="0.508" diameter="1.016"/>
 </package>
-<package name="MP1584EN_STEPDOWN_MODULE">
-<pad name="GND_IN" x="-9.1" y="6.7" drill="0.8" diameter="2.1844"/>
-<pad name="VIN" x="-9.1" y="-6.7" drill="0.8" diameter="2.1844"/>
-<pad name="GND_OUT" x="9.1" y="6.7" drill="0.8" diameter="2.1844"/>
-<pad name="VOUT" x="9.1" y="-6.7" drill="0.8" diameter="2.1844"/>
-<polygon width="0.127" layer="21">
-<vertex x="-7.62" y="6.35"/>
-<vertex x="7.62" y="6.35"/>
-<vertex x="7.62" y="-6.35"/>
-<vertex x="-7.62" y="-6.35"/>
+<package name="LM2596_STEPDOWN_MODULE">
+<pad name="GNDOUT" x="-20" y="8.75" drill="0.8" diameter="2.1844" shape="square"/>
+<pad name="VOUT" x="-20" y="-8.75" drill="0.8" diameter="2.1844" shape="square"/>
+<pad name="VIN" x="20" y="-8.75" drill="0.8" diameter="2.1844" shape="square"/>
+<pad name="GNDIN" x="20" y="8.75" drill="0.8" diameter="2.1844" shape="square"/>
+<polygon width="0.127" layer="47" pour="hatch">
+<vertex x="-21.59" y="10.16"/>
+<vertex x="21.59" y="10.16"/>
+<vertex x="21.59" y="-10.16"/>
+<vertex x="-21.59" y="-10.16"/>
 </polygon>
 </package>
 </packages>
@@ -417,17 +417,17 @@ No holes, no ICSP connections.
 <pin name="GND" x="-27.94" y="7.62" length="middle" rot="R180"/>
 <pin name="3V6" x="-27.94" y="2.54" length="middle" rot="R180"/>
 </symbol>
-<symbol name="MP1584EN_STEPDOWN_MODULE">
+<symbol name="LM2596_STEPDOWN_MODULE">
 <polygon width="0.254" layer="94">
-<vertex x="-15.24" y="15.24"/>
-<vertex x="15.24" y="15.24"/>
-<vertex x="15.24" y="-12.7"/>
-<vertex x="-15.24" y="-12.7"/>
+<vertex x="-35.56" y="20.32"/>
+<vertex x="-35.56" y="-10.16"/>
+<vertex x="-20.32" y="-10.16"/>
+<vertex x="-20.32" y="20.32"/>
 </polygon>
-<pin name="GND_IN" x="-20.32" y="12.7" length="middle"/>
-<pin name="VIN" x="-20.32" y="-10.16" length="middle"/>
-<pin name="GND_OUT" x="20.32" y="12.7" length="middle" rot="R180"/>
-<pin name="VOUT" x="20.32" y="-10.16" length="middle" rot="R180"/>
+<pin name="VOUT" x="-40.64" y="17.78" length="middle"/>
+<pin name="VIN" x="-40.64" y="-7.62" length="middle"/>
+<pin name="GNDIN" x="-15.24" y="-7.62" length="middle" rot="R180"/>
+<pin name="GND_OUT" x="-15.24" y="17.78" length="middle" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -545,15 +545,15 @@ Shield form compatible with the Arduino Uno R3.
 </device>
 </devices>
 </deviceset>
-<deviceset name="MP1584EN_STEPDOWN_MODULE">
+<deviceset name="LM2596_STEPDOWN_MODULE">
 <gates>
-<gate name="G$1" symbol="MP1584EN_STEPDOWN_MODULE" x="-2.54" y="7.62"/>
+<gate name="G$1" symbol="LM2596_STEPDOWN_MODULE" x="25.4" y="7.62"/>
 </gates>
 <devices>
-<device name="" package="MP1584EN_STEPDOWN_MODULE">
+<device name="" package="LM2596_STEPDOWN_MODULE">
 <connects>
-<connect gate="G$1" pin="GND_IN" pad="GND_IN"/>
-<connect gate="G$1" pin="GND_OUT" pad="GND_OUT"/>
+<connect gate="G$1" pin="GNDIN" pad="GNDIN"/>
+<connect gate="G$1" pin="GND_OUT" pad="GNDOUT"/>
 <connect gate="G$1" pin="VIN" pad="VIN"/>
 <connect gate="G$1" pin="VOUT" pad="VOUT"/>
 </connects>
@@ -9335,7 +9335,7 @@ diameter 5 mm, grid 2.54 mm</description>
 <part name="U$1" library="kevins_parts" deviceset="MCP1702_LDOREGULATOR" device=""/>
 <part name="C2" library="adafruit" deviceset="CPOL-US" device="TT5D10" value="330mu"/>
 <part name="C1" library="adafruit" deviceset="CPOL-US" device="TT2D5" value="10mu"/>
-<part name="U$2" library="kevins_parts" deviceset="MP1584EN_STEPDOWN_MODULE" device=""/>
+<part name="U$2" library="kevins_parts" deviceset="LM2596_STEPDOWN_MODULE" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9351,7 +9351,7 @@ diameter 5 mm, grid 2.54 mm</description>
 <instance part="U$1" gate="G$1" x="91.44" y="20.32"/>
 <instance part="C2" gate="G$1" x="25.4" y="7.62"/>
 <instance part="C1" gate="G$1" x="25.4" y="40.64"/>
-<instance part="U$2" gate="G$1" x="101.6" y="-7.62"/>
+<instance part="U$2" gate="G$1" x="99.06" y="-27.94" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -9465,14 +9465,14 @@ diameter 5 mm, grid 2.54 mm</description>
 <label x="30.48" y="-2.54" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="GND_OUT"/>
-<wire x1="121.92" y1="5.08" x2="132.08" y2="5.08" width="0.1524" layer="91"/>
-<label x="137.16" y="5.08" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="L7805" gate="J$1" pin="2"/>
 <wire x1="20.32" y1="22.86" x2="25.4" y2="22.86" width="0.1524" layer="91"/>
 <label x="27.94" y="22.86" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="GND_OUT"/>
+<wire x1="116.84" y1="-12.7" x2="124.46" y2="-12.7" width="0.1524" layer="91"/>
+<label x="127" y="-12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="ENC2B" class="0">
@@ -9531,8 +9531,8 @@ diameter 5 mm, grid 2.54 mm</description>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="VIN"/>
-<wire x1="81.28" y1="-17.78" x2="76.2" y2="-17.78" width="0.1524" layer="91"/>
-<label x="71.12" y="-17.78" size="1.778" layer="95"/>
+<wire x1="91.44" y1="12.7" x2="81.28" y2="12.7" width="0.1524" layer="91"/>
+<label x="73.66" y="12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="V5IN" class="1">
@@ -9629,9 +9629,9 @@ diameter 5 mm, grid 2.54 mm</description>
 <label x="160.02" y="15.24" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="GND_IN"/>
-<wire x1="81.28" y1="5.08" x2="73.66" y2="5.08" width="0.1524" layer="91"/>
-<label x="68.58" y="5.08" size="1.778" layer="95"/>
+<pinref part="U$2" gate="G$1" pin="GNDIN"/>
+<wire x1="91.44" y1="-12.7" x2="81.28" y2="-12.7" width="0.1524" layer="91"/>
+<label x="76.2" y="-12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="3V6" class="0">
@@ -9672,14 +9672,14 @@ diameter 5 mm, grid 2.54 mm</description>
 <label x="27.94" y="15.24" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="VOUT"/>
-<wire x1="121.92" y1="-17.78" x2="132.08" y2="-17.78" width="0.1524" layer="91"/>
-<label x="137.16" y="-15.24" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="L7805" gate="J$1" pin="1"/>
 <wire x1="20.32" y1="20.32" x2="25.4" y2="20.32" width="0.1524" layer="91"/>
 <label x="27.94" y="20.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="VOUT"/>
+<wire x1="116.84" y1="12.7" x2="124.46" y2="12.7" width="0.1524" layer="91"/>
+<label x="127" y="12.7" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
