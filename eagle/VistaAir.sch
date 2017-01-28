@@ -174,10 +174,6 @@ No holes, no ICSP connections.
 <pad name="GND@0" x="24.13" y="2.54" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="GND@1" x="24.13" y="5.08" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="VIN" x="24.13" y="7.62" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="RX" x="-24.13" y="25.4" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="TX" x="-24.13" y="22.86" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="D2" x="-24.13" y="20.32" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="D3" x="-24.13" y="17.78" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="D4" x="-24.13" y="15.24" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="D5" x="-24.13" y="12.7" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="D6" x="-24.13" y="10.16" drill="1.016" diameter="1.8796" rot="R90"/>
@@ -203,10 +199,6 @@ No holes, no ICSP connections.
 <text x="-22.86" y="9.652" size="1.016" layer="21" font="vector" ratio="15">6</text>
 <text x="-22.86" y="12.192" size="1.016" layer="21" font="vector" ratio="15">5</text>
 <text x="-22.86" y="14.732" size="1.016" layer="21" font="vector" ratio="15">4</text>
-<text x="-22.86" y="17.272" size="1.016" layer="21" font="vector" ratio="15">3</text>
-<text x="-22.86" y="19.812" size="1.016" layer="21" font="vector" ratio="15">2</text>
-<text x="-22.86" y="22.352" size="1.016" layer="21" font="vector" ratio="15">TX</text>
-<text x="-22.86" y="24.892" size="1.016" layer="21" font="vector" ratio="15">RX</text>
 <pad name="SDA" x="-24.13" y="-16.51" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="SCL" x="-24.13" y="-19.05" drill="1.016" diameter="1.8796" rot="R90"/>
 <text x="-22.86" y="-17.018" size="1.016" layer="21" font="vector" ratio="15">SDA</text>
@@ -311,11 +303,6 @@ No holes, no ICSP connections.
 <text x="12.7" y="52.324" size="0.889" layer="51" font="vector" align="center">Antenna Keepout</text>
 <wire x1="0" y1="51.435" x2="25.4" y2="51.435" width="0.127" layer="51"/>
 </package>
-<package name="MCP1702_LDOREGULATOR">
-<pad name="P$1" x="1.27" y="5.08" drill="0.508" diameter="1.016"/>
-<pad name="P$2" x="1.27" y="3.81" drill="0.508" diameter="1.016"/>
-<pad name="P$3" x="1.27" y="2.54" drill="0.508" diameter="1.016"/>
-</package>
 <package name="LM2596_STEPDOWN_MODULE">
 <pad name="GNDOUT" x="-20" y="8.75" drill="0.8" diameter="2.1844" shape="square"/>
 <pad name="VOUT" x="-20" y="-8.75" drill="0.8" diameter="2.1844" shape="square"/>
@@ -328,6 +315,17 @@ No holes, no ICSP connections.
 <vertex x="-21.59" y="-10.16"/>
 </polygon>
 </package>
+<package name="LDO_REGULATOR_LP2985-N">
+<wire x1="-1" y1="1.5" x2="0.5" y2="1.5" width="0.127" layer="21"/>
+<wire x1="0.5" y1="1.5" x2="0.5" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="0.5" y1="-1.5" x2="-1" y2="-1.5" width="0.127" layer="21"/>
+<wire x1="-1" y1="-1.5" x2="-1" y2="1.5" width="0.127" layer="21"/>
+<smd name="VIN" x="-1.5" y="1" dx="0.9" dy="0.5" layer="1"/>
+<smd name="GND" x="-1.5" y="0" dx="0.9" dy="0.5" layer="1"/>
+<smd name="CNTRL" x="-1.5" y="-1" dx="0.9" dy="0.5" layer="1"/>
+<smd name="VOUT" x="1" y="1" dx="0.9" dy="0.5" layer="1"/>
+<smd name="BYPASS" x="1" y="-1" dx="0.9" dy="0.5" layer="1"/>
+</package>
 </packages>
 <symbols>
 <symbol name="ARDUINO_R3_SHIELD">
@@ -339,10 +337,6 @@ No holes, no ICSP connections.
 <wire x1="10.16" y1="-25.4" x2="-10.16" y2="-25.4" width="0.254" layer="94"/>
 <text x="-9.652" y="20.574" size="1.778" layer="95" font="vector">&gt;Name</text>
 <text x="-8.89" y="-25.654" size="1.778" layer="96" font="vector" align="top-left">&gt;Value</text>
-<pin name="RX" x="12.7" y="17.78" visible="pin" length="short" rot="R180"/>
-<pin name="TX" x="12.7" y="15.24" visible="pin" length="short" rot="R180"/>
-<pin name="D2" x="12.7" y="10.16" visible="pin" length="short" rot="R180"/>
-<pin name="*D3" x="12.7" y="7.62" visible="pin" length="short" rot="R180"/>
 <pin name="D4" x="12.7" y="5.08" visible="pin" length="short" rot="R180"/>
 <pin name="*D5" x="12.7" y="2.54" visible="pin" length="short" rot="R180"/>
 <pin name="*D6" x="12.7" y="0" visible="pin" length="short" rot="R180"/>
@@ -406,17 +400,6 @@ No holes, no ICSP connections.
 <text x="-10.16" y="28.194" size="1.778" layer="95" font="vector">&gt;Name</text>
 <text x="-10.16" y="-25.654" size="1.778" layer="96" font="vector" align="top-left">&gt;Value</text>
 </symbol>
-<symbol name="MCP1702_LDOREGULATOR">
-<polygon width="0.254" layer="94">
-<vertex x="-38.1" y="15.24"/>
-<vertex x="-38.1" y="0"/>
-<vertex x="-33.02" y="0"/>
-<vertex x="-33.02" y="15.24"/>
-</polygon>
-<pin name="VIN" x="-27.94" y="12.7" length="middle" rot="R180"/>
-<pin name="GND" x="-27.94" y="7.62" length="middle" rot="R180"/>
-<pin name="3V6" x="-27.94" y="2.54" length="middle" rot="R180"/>
-</symbol>
 <symbol name="LM2596_STEPDOWN_MODULE">
 <polygon width="0.254" layer="94">
 <vertex x="-35.56" y="20.32"/>
@@ -428,6 +411,17 @@ No holes, no ICSP connections.
 <pin name="VIN" x="-40.64" y="-7.62" length="middle"/>
 <pin name="GNDIN" x="-15.24" y="-7.62" length="middle" rot="R180"/>
 <pin name="GND_OUT" x="-15.24" y="17.78" length="middle" rot="R180"/>
+</symbol>
+<symbol name="LDO_REGULATOR_LP2985-N">
+<wire x1="-25.4" y1="10.16" x2="-10.16" y2="10.16" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="10.16" x2="-10.16" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-12.7" x2="-25.4" y2="-12.7" width="0.254" layer="94"/>
+<wire x1="-25.4" y1="-12.7" x2="-25.4" y2="10.16" width="0.254" layer="94"/>
+<pin name="VIN" x="-30.48" y="7.62" length="middle"/>
+<pin name="GND" x="-30.48" y="0" length="middle"/>
+<pin name="CNTRL" x="-30.48" y="-7.62" length="middle"/>
+<pin name="VOUT" x="-5.08" y="7.62" length="middle" rot="R180"/>
+<pin name="BYPASS" x="-5.08" y="-5.08" length="middle" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -449,7 +443,6 @@ Shield form compatible with the Arduino Uno R3.
 <connects>
 <connect gate="G$1" pin="*D10" pad="D10"/>
 <connect gate="G$1" pin="*D11" pad="D11"/>
-<connect gate="G$1" pin="*D3" pad="D3"/>
 <connect gate="G$1" pin="*D5" pad="D5"/>
 <connect gate="G$1" pin="*D6" pad="D6"/>
 <connect gate="G$1" pin="*D9" pad="D9"/>
@@ -458,7 +451,6 @@ Shield form compatible with the Arduino Uno R3.
 <connect gate="G$1" pin="AREF" pad="AREF"/>
 <connect gate="G$1" pin="D12" pad="D12"/>
 <connect gate="G$1" pin="D13" pad="D13"/>
-<connect gate="G$1" pin="D2" pad="D2"/>
 <connect gate="G$1" pin="D4" pad="D4"/>
 <connect gate="G$1" pin="D7" pad="D7"/>
 <connect gate="G$1" pin="D8" pad="D8"/>
@@ -466,10 +458,8 @@ Shield form compatible with the Arduino Uno R3.
 <connect gate="G$1" pin="GND@1" pad="GND@1"/>
 <connect gate="G$1" pin="GND@2" pad="GND@2"/>
 <connect gate="G$1" pin="RES" pad="RES"/>
-<connect gate="G$1" pin="RX" pad="RX"/>
 <connect gate="G$1" pin="SCL" pad="SCL"/>
 <connect gate="G$1" pin="SDA" pad="SDA"/>
-<connect gate="G$1" pin="TX" pad="TX"/>
 <connect gate="G$1" pin="VIN" pad="VIN"/>
 </connects>
 <technologies>
@@ -528,23 +518,6 @@ Shield form compatible with the Arduino Uno R3.
 </device>
 </devices>
 </deviceset>
-<deviceset name="MCP1702_LDOREGULATOR">
-<gates>
-<gate name="G$1" symbol="MCP1702_LDOREGULATOR" x="17.78" y="10.16"/>
-</gates>
-<devices>
-<device name="" package="MCP1702_LDOREGULATOR">
-<connects>
-<connect gate="G$1" pin="3V6" pad="P$1"/>
-<connect gate="G$1" pin="GND" pad="P$2"/>
-<connect gate="G$1" pin="VIN" pad="P$3"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="LM2596_STEPDOWN_MODULE">
 <gates>
 <gate name="G$1" symbol="LM2596_STEPDOWN_MODULE" x="25.4" y="7.62"/>
@@ -554,6 +527,25 @@ Shield form compatible with the Arduino Uno R3.
 <connects>
 <connect gate="G$1" pin="GNDIN" pad="GNDIN"/>
 <connect gate="G$1" pin="GND_OUT" pad="GNDOUT"/>
+<connect gate="G$1" pin="VIN" pad="VIN"/>
+<connect gate="G$1" pin="VOUT" pad="VOUT"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="LDO_REGULATOR_LP2985-N">
+<gates>
+<gate name="G$1" symbol="LDO_REGULATOR_LP2985-N" x="17.78" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="LDO_REGULATOR_LP2985-N">
+<connects>
+<connect gate="G$1" pin="BYPASS" pad="BYPASS"/>
+<connect gate="G$1" pin="CNTRL" pad="CNTRL"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
 <connect gate="G$1" pin="VIN" pad="VIN"/>
 <connect gate="G$1" pin="VOUT" pad="VOUT"/>
 </connects>
@@ -4180,8 +4172,8 @@ diameter 5 mm, grid 2.54 mm</description>
 <wire x1="-1.27" y1="1.016" x2="-1.27" y2="1.778" width="0.1524" layer="21"/>
 <wire x1="-0.889" y1="1.397" x2="-1.651" y2="1.397" width="0.1524" layer="21"/>
 <circle x="0" y="0" radius="2.54" width="0.1524" layer="21"/>
-<pad name="-" x="1.27" y="0" drill="0.8128" shape="octagon"/>
-<pad name="+" x="-1.27" y="0" drill="0.8128"/>
+<pad name="-" x="1.27" y="0" drill="0.8128" diameter="1.778"/>
+<pad name="+" x="-1.27" y="0" drill="0.8128" diameter="1.778"/>
 <text x="2.54" y="1.27" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="2.54" y="-2.413" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 <text x="-0.762" y="-2.159" size="0.9906" layer="21" ratio="12">TT</text>
@@ -4298,8 +4290,8 @@ diameter 10 mm, grid 5.08 mm</description>
 <wire x1="-2.413" y1="1.651" x2="-1.397" y2="1.651" width="0.1524" layer="21"/>
 <wire x1="-1.905" y1="1.143" x2="-1.905" y2="2.159" width="0.1524" layer="21"/>
 <circle x="0" y="0" radius="5.08" width="0.1524" layer="21"/>
-<pad name="-" x="2.54" y="0" drill="0.8128" shape="octagon"/>
-<pad name="+" x="-2.54" y="0" drill="0.8128"/>
+<pad name="-" x="2.54" y="0" drill="0.8128" diameter="2.54"/>
+<pad name="+" x="-2.54" y="0" drill="0.8128" diameter="2.54"/>
 <text x="4.191" y="3.302" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-3.302" y="-3.048" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 <text x="2.794" y="1.143" size="0.9906" layer="21" ratio="12">TT</text>
@@ -9312,6 +9304,123 @@ diameter 5 mm, grid 2.54 mm</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="SparkFun-Boards">
+<description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
+This library contains footprints for SparkFun breakout boards, microcontrollers (Arduino, Particle, Teensy, etc.),  breadboards, non-RF modules, etc.
+&lt;br&gt;
+&lt;br&gt;
+We've spent an enormous amount of time creating and checking these footprints and parts, but it is &lt;b&gt; the end user's responsibility&lt;/b&gt; to ensure correctness and suitablity for a given componet or application. 
+&lt;br&gt;
+&lt;br&gt;If you enjoy using this library, please buy one of our products at &lt;a href=" www.sparkfun.com"&gt;SparkFun.com&lt;/a&gt;.
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
+&lt;br&gt;
+&lt;br&gt;
+You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
+<packages>
+<package name="SPARKFUN_LOGIC_LEVEL_CONVERTER">
+<description>&lt;h3&gt;SparkFun Logic Level Converter&lt;/h3&gt;
+&lt;p&gt;Specifications:
+&lt;ul&gt;&lt;li&gt;Pin count:12&lt;/li&gt;
+&lt;li&gt;Pin pitch: 0.1"&lt;/li&gt;
+&lt;li&gt;Area: 0.6x 0.5 "&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+&lt;p&gt;Example device(s):
+&lt;ul&gt;&lt;li&gt;SparkFun Logic Level Converter&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</description>
+<pad name="LV1" x="-5.08" y="6.35" drill="1.016" diameter="1.8796"/>
+<pad name="LV2" x="-5.08" y="3.81" drill="1.016" diameter="1.8796"/>
+<pad name="LV" x="-5.08" y="1.27" drill="1.016" diameter="1.8796"/>
+<pad name="GND1" x="-5.08" y="-1.27" drill="1.016" diameter="1.8796"/>
+<pad name="LV3" x="-5.08" y="-3.81" drill="1.016" diameter="1.8796"/>
+<pad name="LV4" x="-5.08" y="-6.35" drill="1.016" diameter="1.8796"/>
+<pad name="HV4" x="5.08" y="-6.35" drill="1.016" diameter="1.8796"/>
+<pad name="HV3" x="5.08" y="-3.81" drill="1.016" diameter="1.8796"/>
+<pad name="GND2" x="5.08" y="-1.27" drill="1.016" diameter="1.8796"/>
+<pad name="HV" x="5.08" y="1.27" drill="1.016" diameter="1.8796"/>
+<pad name="HV2" x="5.08" y="3.81" drill="1.016" diameter="1.8796"/>
+<pad name="HV1" x="5.08" y="6.35" drill="1.016" diameter="1.8796"/>
+<wire x1="-6.35" y1="-7.62" x2="-6.35" y2="7.62" width="0.127" layer="21"/>
+<wire x1="-6.35" y1="7.62" x2="6.35" y2="7.62" width="0.127" layer="21"/>
+<wire x1="6.35" y1="7.62" x2="6.35" y2="-7.62" width="0.127" layer="21"/>
+<wire x1="6.35" y1="-7.62" x2="-6.35" y2="-7.62" width="0.127" layer="21"/>
+<text x="-3.81" y="6.35" size="0.8128" layer="21" font="vector" ratio="20">LV1</text>
+<text x="-3.81" y="3.81" size="0.8128" layer="21" font="vector" ratio="20">LV2</text>
+<text x="1.905" y="6.35" size="0.8128" layer="21" font="vector" ratio="20">HV1</text>
+<text x="1.905" y="3.81" size="0.8128" layer="21" font="vector" ratio="20">HV2</text>
+<text x="-3.81" y="1.27" size="0.8128" layer="21" font="vector" ratio="20">LV</text>
+<text x="-3.81" y="-1.27" size="0.8128" layer="21" font="vector" ratio="20">GND</text>
+<text x="-3.81" y="-3.81" size="0.8128" layer="21" font="vector" ratio="20">LV3</text>
+<text x="-3.81" y="-6.35" size="0.8128" layer="21" font="vector" ratio="20">LV4</text>
+<text x="2.54" y="1.27" size="0.8128" layer="21" font="vector" ratio="20">HV</text>
+<text x="1.905" y="-1.27" size="0.8128" layer="21" font="vector" ratio="20">GND</text>
+<text x="1.905" y="-3.81" size="0.8128" layer="21" font="vector" ratio="20">HV3</text>
+<text x="1.905" y="-6.35" size="0.8128" layer="21" font="vector" ratio="20">HV4</text>
+<text x="0" y="7.874" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-7.874" size="0.6096" layer="25" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="LOGIC_LEVEL_CONVERTER">
+<description>&lt;h3&gt;SparkFun Logic Level Converter - Bidirectional&lt;/h3&gt;
+&lt;p&gt;3.3v-5v&lt;/p&gt;</description>
+<pin name="HV_TXO_1" x="15.24" y="7.62" length="short" rot="R180"/>
+<pin name="HV_RXI_1" x="15.24" y="5.08" length="short" rot="R180"/>
+<pin name="HV" x="15.24" y="2.54" length="short" direction="pwr" rot="R180"/>
+<pin name="GND@2" x="15.24" y="0" length="short" direction="pwr" rot="R180"/>
+<pin name="HV_RXI_2" x="15.24" y="-2.54" length="short" rot="R180"/>
+<pin name="HV_TXO_2" x="15.24" y="-5.08" length="short" rot="R180"/>
+<pin name="LV_TXI_1" x="-17.78" y="7.62" length="short"/>
+<pin name="LV" x="-17.78" y="2.54" length="short" direction="pwr"/>
+<pin name="LV_RXO_1" x="-17.78" y="5.08" length="short"/>
+<pin name="GND" x="-17.78" y="0" length="short" direction="pwr"/>
+<pin name="LV_RXO_2" x="-17.78" y="-2.54" length="short"/>
+<pin name="LV_TXI_2" x="-17.78" y="-5.08" length="short"/>
+<wire x1="-15.24" y1="-7.62" x2="-15.24" y2="10.16" width="0.254" layer="94"/>
+<wire x1="-15.24" y1="10.16" x2="12.7" y2="10.16" width="0.254" layer="94"/>
+<wire x1="12.7" y1="10.16" x2="12.7" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-7.62" x2="-15.24" y2="-7.62" width="0.254" layer="94"/>
+<text x="-5.08" y="10.414" size="1.778" layer="95" font="vector">&gt;NAME</text>
+<text x="-5.08" y="-7.874" size="1.778" layer="95" font="vector" align="top-left">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SPARKFUN_LOGIC_LEVEL_CONVERTER" prefix="B">
+<description>&lt;h3&gt;SparkFun Logic Level Converter -Bi-Directional &lt;/h3&gt;
+&lt;p&gt;This is the mechnical outline for the 3.3V - 5V bi directional logic level converter. &lt;/p&gt;
+
+
+&lt;b&gt;&lt;p&gt;SparkFun Products:&lt;/b&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href=”https://www.sparkfun.com/products/12009”&gt;SparkFun Logic Level Converter - Bi-Directional&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</description>
+<gates>
+<gate name="G$1" symbol="LOGIC_LEVEL_CONVERTER" x="10.16" y="-22.86"/>
+</gates>
+<devices>
+<device name="" package="SPARKFUN_LOGIC_LEVEL_CONVERTER">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND1"/>
+<connect gate="G$1" pin="GND@2" pad="GND2"/>
+<connect gate="G$1" pin="HV" pad="HV"/>
+<connect gate="G$1" pin="HV_RXI_1" pad="HV2"/>
+<connect gate="G$1" pin="HV_RXI_2" pad="HV3"/>
+<connect gate="G$1" pin="HV_TXO_1" pad="HV1"/>
+<connect gate="G$1" pin="HV_TXO_2" pad="HV4"/>
+<connect gate="G$1" pin="LV" pad="LV"/>
+<connect gate="G$1" pin="LV_RXO_1" pad="LV2"/>
+<connect gate="G$1" pin="LV_RXO_2" pad="LV3"/>
+<connect gate="G$1" pin="LV_TXI_1" pad="LV1"/>
+<connect gate="G$1" pin="LV_TXI_2" pad="LV4"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -9321,8 +9430,8 @@ diameter 5 mm, grid 2.54 mm</description>
 <class number="0" name="default" width="0.508" drill="0">
 <clearance class="0" value="0.508"/>
 </class>
-<class number="1" name="power" width="0.762" drill="0">
-<clearance class="1" value="0.635"/>
+<class number="1" name="power" width="1.27" drill="0">
+<clearance class="1" value="0.762"/>
 </class>
 </classes>
 <parts>
@@ -9332,10 +9441,12 @@ diameter 5 mm, grid 2.54 mm</description>
 <part name="B2" library="kevins_parts" deviceset="ESP32_THING" device=""/>
 <part name="J3" library="SparkFun-Connectors" deviceset="CONN_04" device=""/>
 <part name="L7805" library="SparkFun-Connectors" deviceset="CONN_03" device=""/>
-<part name="U$1" library="kevins_parts" deviceset="MCP1702_LDOREGULATOR" device=""/>
 <part name="C2" library="adafruit" deviceset="CPOL-US" device="TT5D10" value="330mu"/>
 <part name="C1" library="adafruit" deviceset="CPOL-US" device="TT2D5" value="10mu"/>
 <part name="U$2" library="kevins_parts" deviceset="LM2596_STEPDOWN_MODULE" device=""/>
+<part name="U$1" library="kevins_parts" deviceset="LDO_REGULATOR_LP2985-N" device=""/>
+<part name="B3" library="SparkFun-Boards" deviceset="SPARKFUN_LOGIC_LEVEL_CONVERTER" device=""/>
+<part name="B4" library="SparkFun-Boards" deviceset="SPARKFUN_LOGIC_LEVEL_CONVERTER" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -9348,84 +9459,86 @@ diameter 5 mm, grid 2.54 mm</description>
 <instance part="B2" gate="G$1" x="127" y="58.42"/>
 <instance part="J3" gate="G$1" x="83.82" y="68.58"/>
 <instance part="L7805" gate="J$1" x="12.7" y="22.86"/>
-<instance part="U$1" gate="G$1" x="91.44" y="20.32"/>
 <instance part="C2" gate="G$1" x="25.4" y="7.62"/>
 <instance part="C1" gate="G$1" x="25.4" y="40.64"/>
 <instance part="U$2" gate="G$1" x="99.06" y="-27.94" rot="R270"/>
+<instance part="U$1" gate="G$1" x="83.82" y="30.48"/>
+<instance part="B3" gate="G$1" x="5.08" y="-30.48"/>
+<instance part="B4" gate="G$1" x="88.9" y="-35.56"/>
 </instances>
 <busses>
 </busses>
 <nets>
-<net name="CLW1" class="0">
-<segment>
-<pinref part="B1" gate="G$1" pin="D7"/>
-<wire x1="58.42" y1="76.2" x2="66.04" y2="76.2" width="0.1524" layer="91"/>
-<label x="68.58" y="76.2" size="1.778" layer="95"/>
-</segment>
+<net name="CLW1_3V3" class="0">
 <segment>
 <wire x1="114.3" y1="58.42" x2="111.76" y2="60.96" width="0.1524" layer="91"/>
 <label x="106.68" y="60.96" size="1.778" layer="95"/>
 <pinref part="B2" gate="G$1" pin="27"/>
 </segment>
-</net>
-<net name="PWM2" class="0">
 <segment>
-<pinref part="B1" gate="G$1" pin="*D6"/>
-<wire x1="58.42" y1="78.74" x2="66.04" y2="78.74" width="0.1524" layer="91"/>
-<label x="68.58" y="78.74" size="1.778" layer="95"/>
+<pinref part="B3" gate="G$1" pin="LV_TXI_1"/>
+<wire x1="-12.7" y1="-22.86" x2="-17.78" y2="-22.86" width="0.1524" layer="91"/>
+<label x="-25.4" y="-22.86" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="PWM2_3V3" class="0">
 <segment>
 <wire x1="114.3" y1="55.88" x2="111.76" y2="58.42" width="0.1524" layer="91"/>
 <label x="106.68" y="58.42" size="1.778" layer="95"/>
 <pinref part="B2" gate="G$1" pin="14"/>
 </segment>
-</net>
-<net name="PWM1" class="0">
 <segment>
-<pinref part="B1" gate="G$1" pin="*D5"/>
-<wire x1="58.42" y1="81.28" x2="66.04" y2="81.28" width="0.1524" layer="91"/>
-<label x="68.58" y="81.28" size="1.778" layer="95"/>
+<pinref part="B3" gate="G$1" pin="LV_RXO_1"/>
+<wire x1="-12.7" y1="-25.4" x2="-17.78" y2="-25.4" width="0.1524" layer="91"/>
+<label x="-22.86" y="-25.4" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="PWM1_3V3" class="0">
 <segment>
 <wire x1="114.3" y1="53.34" x2="111.76" y2="55.88" width="0.1524" layer="91"/>
 <label x="106.68" y="55.88" size="1.778" layer="95"/>
 <pinref part="B2" gate="G$1" pin="12"/>
 </segment>
-</net>
-<net name="CLW2" class="0">
 <segment>
-<pinref part="B1" gate="G$1" pin="D4"/>
-<wire x1="58.42" y1="83.82" x2="66.04" y2="83.82" width="0.1524" layer="91"/>
-<label x="68.58" y="83.82" size="1.778" layer="95"/>
+<pinref part="B3" gate="G$1" pin="LV_RXO_2"/>
+<wire x1="-12.7" y1="-33.02" x2="-17.78" y2="-33.02" width="0.1524" layer="91"/>
+<label x="-25.4" y="-33.02" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="CLW2_3V3" class="0">
 <segment>
 <wire x1="114.3" y1="50.8" x2="111.76" y2="53.34" width="0.1524" layer="91"/>
 <label x="106.68" y="53.34" size="1.778" layer="95"/>
 <pinref part="B2" gate="G$1" pin="13"/>
 </segment>
-</net>
-<net name="CCL1" class="0">
 <segment>
-<pinref part="B1" gate="G$1" pin="D8"/>
-<wire x1="58.42" y1="73.66" x2="66.04" y2="73.66" width="0.1524" layer="91"/>
-<label x="68.58" y="73.66" size="1.778" layer="95"/>
+<pinref part="B3" gate="G$1" pin="LV_TXI_2"/>
+<wire x1="-12.7" y1="-35.56" x2="-17.78" y2="-35.56" width="0.1524" layer="91"/>
+<label x="-25.4" y="-35.56" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="CCL1_3V3" class="0">
 <segment>
 <wire x1="114.3" y1="60.96" x2="111.76" y2="63.5" width="0.1524" layer="91"/>
 <label x="106.68" y="63.5" size="1.778" layer="95"/>
 <pinref part="B2" gate="G$1" pin="26"/>
 </segment>
-</net>
-<net name="CCL2" class="0">
 <segment>
-<pinref part="B1" gate="G$1" pin="*D9"/>
-<wire x1="58.42" y1="71.12" x2="66.04" y2="71.12" width="0.1524" layer="91"/>
-<label x="68.58" y="71.12" size="1.778" layer="95"/>
+<pinref part="B4" gate="G$1" pin="LV_RXO_1"/>
+<wire x1="71.12" y1="-30.48" x2="66.04" y2="-30.48" width="0.1524" layer="91"/>
+<label x="60.96" y="-30.48" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="CCL2_3V3" class="0">
 <segment>
 <wire x1="114.3" y1="63.5" x2="111.76" y2="66.04" width="0.1524" layer="91"/>
 <label x="106.68" y="66.04" size="1.778" layer="95"/>
 <pinref part="B2" gate="G$1" pin="25"/>
+</segment>
+<segment>
+<pinref part="B4" gate="G$1" pin="LV_TXI_1"/>
+<wire x1="71.12" y1="-27.94" x2="66.04" y2="-27.94" width="0.1524" layer="91"/>
+<label x="60.96" y="-27.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="BOARD_GND" class="1">
@@ -9443,16 +9556,6 @@ diameter 5 mm, grid 2.54 mm</description>
 <pinref part="B2" gate="G$1" pin="GND@1"/>
 <wire x1="114.3" y1="35.56" x2="109.22" y2="35.56" width="0.1524" layer="91"/>
 <label x="101.6" y="35.56" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="B1" gate="G$1" pin="GND@0"/>
-<wire x1="33.02" y1="55.88" x2="27.94" y2="55.88" width="0.1524" layer="91"/>
-<label x="22.86" y="55.88" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="U$1" gate="G$1" pin="GND"/>
-<wire x1="63.5" y1="27.94" x2="73.66" y2="27.94" width="0.1524" layer="91"/>
-<label x="76.2" y="27.94" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="C1" gate="G$1" pin="-"/>
@@ -9473,6 +9576,16 @@ diameter 5 mm, grid 2.54 mm</description>
 <pinref part="U$2" gate="G$1" pin="GND_OUT"/>
 <wire x1="116.84" y1="-12.7" x2="124.46" y2="-12.7" width="0.1524" layer="91"/>
 <label x="127" y="-12.7" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="GND"/>
+<wire x1="53.34" y1="30.48" x2="48.26" y2="30.48" width="0.1524" layer="91"/>
+<label x="48.26" y="30.48" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B1" gate="G$1" pin="GND@0"/>
+<wire x1="33.02" y1="55.88" x2="27.94" y2="55.88" width="0.1524" layer="91"/>
+<label x="22.86" y="55.88" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="ENC2B" class="0">
@@ -9547,11 +9660,6 @@ diameter 5 mm, grid 2.54 mm</description>
 <label x="22.86" y="68.58" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="VIN"/>
-<wire x1="63.5" y1="33.02" x2="73.66" y2="33.02" width="0.1524" layer="91"/>
-<label x="76.2" y="33.02" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="C1" gate="G$1" pin="+"/>
 <wire x1="25.4" y1="43.18" x2="25.4" y2="45.72" width="0.1524" layer="91"/>
 <label x="27.94" y="45.72" size="1.778" layer="95"/>
@@ -9560,6 +9668,26 @@ diameter 5 mm, grid 2.54 mm</description>
 <pinref part="L7805" gate="J$1" pin="3"/>
 <wire x1="20.32" y1="25.4" x2="25.4" y2="25.4" width="0.1524" layer="91"/>
 <label x="27.94" y="25.4" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="VIN"/>
+<wire x1="53.34" y1="38.1" x2="48.26" y2="38.1" width="0.1524" layer="91"/>
+<label x="48.26" y="38.1" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="CNTRL"/>
+<wire x1="53.34" y1="22.86" x2="48.26" y2="22.86" width="0.1524" layer="91"/>
+<label x="45.72" y="22.86" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B3" gate="G$1" pin="HV"/>
+<wire x1="20.32" y1="-27.94" x2="25.4" y2="-27.94" width="0.1524" layer="91"/>
+<label x="33.02" y="-27.94" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B4" gate="G$1" pin="HV"/>
+<wire x1="104.14" y1="-33.02" x2="109.22" y2="-33.02" width="0.1524" layer="91"/>
+<label x="111.76" y="-33.02" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="LIMTOPA" class="0">
@@ -9646,9 +9774,9 @@ diameter 5 mm, grid 2.54 mm</description>
 <label x="93.98" y="68.58" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="3V6"/>
-<wire x1="63.5" y1="22.86" x2="73.66" y2="22.86" width="0.1524" layer="91"/>
-<label x="76.2" y="22.86" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="VOUT"/>
+<wire x1="78.74" y1="38.1" x2="81.28" y2="38.1" width="0.1524" layer="91"/>
+<label x="83.82" y="38.1" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="NC1" class="0">
@@ -9680,6 +9808,126 @@ diameter 5 mm, grid 2.54 mm</description>
 <pinref part="U$2" gate="G$1" pin="VOUT"/>
 <wire x1="116.84" y1="12.7" x2="124.46" y2="12.7" width="0.1524" layer="91"/>
 <label x="127" y="12.7" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="NC" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="BYPASS"/>
+<wire x1="78.74" y1="25.4" x2="83.82" y2="25.4" width="0.1524" layer="91"/>
+<label x="83.82" y="25.4" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="3V3" class="0">
+<segment>
+<pinref part="B2" gate="G$1" pin="3V3@5"/>
+<wire x1="114.3" y1="45.72" x2="109.22" y2="45.72" width="0.1524" layer="91"/>
+<label x="104.14" y="45.72" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B3" gate="G$1" pin="LV"/>
+<wire x1="-12.7" y1="-27.94" x2="-17.78" y2="-27.94" width="0.1524" layer="91"/>
+<label x="-25.4" y="-27.94" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B4" gate="G$1" pin="LV"/>
+<wire x1="71.12" y1="-33.02" x2="66.04" y2="-33.02" width="0.1524" layer="91"/>
+<label x="60.96" y="-33.02" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CLW2_5V" class="0">
+<segment>
+<pinref part="B1" gate="G$1" pin="D4"/>
+<wire x1="58.42" y1="83.82" x2="66.04" y2="83.82" width="0.1524" layer="91"/>
+<label x="68.58" y="83.82" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B3" gate="G$1" pin="HV_TXO_2"/>
+<wire x1="20.32" y1="-35.56" x2="25.4" y2="-35.56" width="0.1524" layer="91"/>
+<label x="35.56" y="-35.56" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PWM1_5V" class="0">
+<segment>
+<pinref part="B1" gate="G$1" pin="*D5"/>
+<wire x1="58.42" y1="81.28" x2="66.04" y2="81.28" width="0.1524" layer="91"/>
+<label x="68.58" y="81.28" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B3" gate="G$1" pin="HV_RXI_2"/>
+<wire x1="20.32" y1="-33.02" x2="25.4" y2="-33.02" width="0.1524" layer="91"/>
+<label x="33.02" y="-33.02" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="PWM2_5V" class="0">
+<segment>
+<pinref part="B1" gate="G$1" pin="*D6"/>
+<wire x1="58.42" y1="78.74" x2="66.04" y2="78.74" width="0.1524" layer="91"/>
+<label x="68.58" y="78.74" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B3" gate="G$1" pin="HV_RXI_1"/>
+<wire x1="20.32" y1="-25.4" x2="25.4" y2="-25.4" width="0.1524" layer="91"/>
+<label x="33.02" y="-25.4" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CLW1_5V" class="0">
+<segment>
+<pinref part="B1" gate="G$1" pin="D7"/>
+<wire x1="58.42" y1="76.2" x2="66.04" y2="76.2" width="0.1524" layer="91"/>
+<label x="68.58" y="76.2" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B3" gate="G$1" pin="HV_TXO_1"/>
+<wire x1="20.32" y1="-22.86" x2="25.4" y2="-22.86" width="0.1524" layer="91"/>
+<label x="30.48" y="-22.86" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CCL1_5V" class="0">
+<segment>
+<pinref part="B1" gate="G$1" pin="D8"/>
+<wire x1="58.42" y1="73.66" x2="66.04" y2="73.66" width="0.1524" layer="91"/>
+<label x="68.58" y="73.66" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B4" gate="G$1" pin="HV_RXI_1"/>
+<wire x1="104.14" y1="-30.48" x2="109.22" y2="-30.48" width="0.1524" layer="91"/>
+<label x="111.76" y="-30.48" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="CCL2_5V" class="0">
+<segment>
+<pinref part="B1" gate="G$1" pin="*D9"/>
+<wire x1="58.42" y1="71.12" x2="66.04" y2="71.12" width="0.1524" layer="91"/>
+<label x="68.58" y="71.12" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="B4" gate="G$1" pin="HV_TXO_1"/>
+<wire x1="104.14" y1="-27.94" x2="109.22" y2="-27.94" width="0.1524" layer="91"/>
+<label x="114.3" y="-27.94" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$1" class="0">
+<segment>
+<pinref part="B3" gate="G$1" pin="GND"/>
+<wire x1="-12.7" y1="-30.48" x2="-17.78" y2="-30.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$2" class="0">
+<segment>
+<pinref part="B3" gate="G$1" pin="GND@2"/>
+<wire x1="20.32" y1="-30.48" x2="25.4" y2="-30.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="B4" gate="G$1" pin="GND"/>
+<wire x1="71.12" y1="-35.56" x2="66.04" y2="-35.56" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$4" class="0">
+<segment>
+<pinref part="B4" gate="G$1" pin="GND@2"/>
+<wire x1="104.14" y1="-35.56" x2="109.22" y2="-35.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
