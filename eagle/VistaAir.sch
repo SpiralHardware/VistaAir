@@ -173,7 +173,6 @@ No holes, no ICSP connections.
 <pad name="5V" x="24.13" y="0" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="GND@0" x="24.13" y="2.54" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="GND@1" x="24.13" y="5.08" drill="1.016" diameter="1.8796" rot="R90"/>
-<pad name="VIN" x="24.13" y="7.62" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="D4" x="-24.13" y="15.24" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="D5" x="-24.13" y="12.7" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="D6" x="-24.13" y="10.16" drill="1.016" diameter="1.8796" rot="R90"/>
@@ -186,7 +185,6 @@ No holes, no ICSP connections.
 <pad name="D13" x="-24.13" y="-8.89" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="GND@2" x="-24.13" y="-11.43" drill="1.016" diameter="1.8796" rot="R90"/>
 <pad name="AREF" x="-24.13" y="-13.97" drill="1.016" diameter="1.8796" rot="R90"/>
-<text x="22.7457" y="8.128" size="1.016" layer="21" font="vector" ratio="15" rot="R180">VIN</text>
 <text x="-22.86" y="-11.938" size="1.016" layer="21" font="vector" ratio="15">GND</text>
 <text x="-22.86" y="-9.398" size="1.016" layer="21" font="vector" ratio="15">13</text>
 <text x="-22.86" y="-6.858" size="1.016" layer="21" font="vector" ratio="15">12</text>
@@ -347,7 +345,6 @@ No holes, no ICSP connections.
 <pin name="*D11" x="12.7" y="-12.7" visible="pin" length="short" rot="R180"/>
 <pin name="D12" x="12.7" y="-15.24" visible="pin" length="short" rot="R180"/>
 <pin name="D13" x="12.7" y="-17.78" visible="pin" length="short" rot="R180"/>
-<pin name="VIN" x="-12.7" y="-7.62" visible="pin" length="short"/>
 <pin name="RES" x="-12.7" y="-5.08" visible="pin" length="short"/>
 <pin name="5V" x="-12.7" y="-10.16" visible="pin" length="short"/>
 <pin name="AREF" x="-12.7" y="-15.24" visible="pin" length="short"/>
@@ -460,7 +457,6 @@ Shield form compatible with the Arduino Uno R3.
 <connect gate="G$1" pin="RES" pad="RES"/>
 <connect gate="G$1" pin="SCL" pad="SCL"/>
 <connect gate="G$1" pin="SDA" pad="SDA"/>
-<connect gate="G$1" pin="VIN" pad="VIN"/>
 </connects>
 <technologies>
 <technology name=""/>
