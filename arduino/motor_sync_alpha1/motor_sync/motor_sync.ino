@@ -26,8 +26,8 @@
 //   Best Performance: both pins have interrupt capability
 //   Good Performance: only the first pin has interrupt capability
 //   Low Performance:  neither pin has interrupt capability
-Encoder leftMotor(18, 19);
-Encoder rightMotor(20, 21);
+Encoder leftMotor(33, 32);
+Encoder rightMotor(28, 27);
 
 void setup() {
   Serial.begin(9600);

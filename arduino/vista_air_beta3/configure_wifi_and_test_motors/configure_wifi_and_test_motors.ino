@@ -18,6 +18,9 @@ int inApin[2] = {27, 13};  // INA: Clockwise input
 int inBpin[2] = {26, 25}; // INB: Counter-clockwise input
 int ledcs[2] = {M1CHANNEL, M2CHANNEL}; // PWM input
 
+// testing without pwm
+int mPins[2] = {M1PIN, M2PIN};
+
 // not sure whether last byte of MAC is C or D - conflicting reports, internal ESP32 compiled lib wrappers
 // report D during startup, but my code below reports C
 byte mac[] = {
@@ -54,15 +57,15 @@ void setup(void) {
   }
   
   // assign pwm pins to ledc channels
-  ledcAttachPin(M1PIN, M1CHANNEL);
-  ledcAttachPin(M2PIN, M2CHANNEL);
+  //ledcAttachPin(M1PIN, M1CHANNEL);
+  //ledcAttachPin(M2PIN, M2CHANNEL);
 
   // intialise the ledc channels
-  ledcSetup(M1CHANNEL, 12000, 8); // 12 kHz PWM, 8-bit resolution
-  ledcSetup(M2CHANNEL, 12000, 8);
+  //ledcSetup(M1CHANNEL, 1000, 8); // 1kHz PWM, 8-bit resolution
+  //ledcSetup(M2CHANNEL, 1000, 8);
 
   // ledcWrite(channel, dutycycle)
-  ledcWrite(M1CHANNEL, 255);
+  //ledcWrite(M1CHANNEL, 255);
 
   WiFi.mode(WIFI_AP);
   WiFi.softAP(WIFI_SSID);
@@ -84,7 +87,7 @@ void setup(void) {
 
   Serial.println("try motor go");
   Serial.println("try motor go");
-  motorGo(0, CW, 255);
+  motorGo(1, CW, 255);
 }
 
 
@@ -96,7 +99,8 @@ void motorOff(int motor)
     digitalWrite(inApin[i], LOW);
     digitalWrite(inBpin[i], LOW);
   }
-  ledcWrite(ledcs[motor], 0);
+  //ledcWrite(ledcs[motor], 0);
+   digitalWrite(mPins[motor], LOW);
 }
 
 /* motorGo() will set a motor going in a specific direction
@@ -133,7 +137,8 @@ void motorGo(uint8_t motor, uint8_t direct, uint8_t pwm)
       else
         digitalWrite(inBpin[motor], LOW);
 
-      ledcWrite(ledcs[motor], pwm);
+      //ledcWrite(ledcs[motor], pwm);
+      digitalWrite(mPins[motor], HIGH);
     }
   }
 }
