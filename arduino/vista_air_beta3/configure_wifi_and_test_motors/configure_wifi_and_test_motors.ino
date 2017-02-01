@@ -1,4 +1,8 @@
-#include <WiFi.h>
+
+// needed for hacked encoder library
+#define ESP32 1
+
+#include  <WiFi.h>
 #include <string.h>
 #include <stddef.h>
 
@@ -38,9 +42,6 @@ void setup(void) {
   int boardLed = 5;
   pinMode(boardLed, OUTPUT);
   digitalWrite(boardLed, LOW);// Turn off on-board blue led
-
-  delay(2000);
-  Serial.println("test motor 1");
   
   // Initialize digital pins as outputs
   for (int i=0; i<2; i++)
@@ -57,15 +58,23 @@ void setup(void) {
   }
   
   // assign pwm pins to ledc channels
-  //ledcAttachPin(M1PIN, M1CHANNEL);
-  //ledcAttachPin(M2PIN, M2CHANNEL);
+  ledcAttachPin(M1PIN, M1CHANNEL);
+  ledcAttachPin(M2PIN, M2CHANNEL);
 
   // intialise the ledc channels
-  //ledcSetup(M1CHANNEL, 1000, 8); // 1kHz PWM, 8-bit resolution
-  //ledcSetup(M2CHANNEL, 1000, 8);
+  ledcSetup(M1CHANNEL, 100, 8); // 100Hz PWM, 8-bit resolution
+  ledcSetup(M2CHANNEL, 100, 8);
 
-  // ledcWrite(channel, dutycycle)
-  //ledcWrite(M1CHANNEL, 255);
+  //ledcWrite(channel, dutycycle)
+  //ledcWrite(M1CHANNEL, 0);
+  //ledcWrite(M2CHANNEL, 0);
+
+  motorOff(0);
+  motorOff(1);
+  
+  //Serial.println("try motor go");
+  //Serial.println("try motor go");
+ // motorGo(1, CW, 255);
 
   WiFi.mode(WIFI_AP);
   WiFi.softAP(WIFI_SSID);
@@ -84,10 +93,6 @@ void setup(void) {
   // seems the default AP IP is 192.168.4.1?? - although, dont need that, client phone can determine AP IP
   server.begin();
   isAP = true;
-
-  Serial.println("try motor go");
-  Serial.println("try motor go");
-  motorGo(1, CW, 255);
 }
 
 
@@ -99,8 +104,8 @@ void motorOff(int motor)
     digitalWrite(inApin[i], LOW);
     digitalWrite(inBpin[i], LOW);
   }
-  //ledcWrite(ledcs[motor], 0);
-   digitalWrite(mPins[motor], LOW);
+  ledcWrite(ledcs[motor], 0);
+   //digitalWrite(mPins[motor], LOW);
 }
 
 /* motorGo() will set a motor going in a specific direction
@@ -137,8 +142,8 @@ void motorGo(uint8_t motor, uint8_t direct, uint8_t pwm)
       else
         digitalWrite(inBpin[motor], LOW);
 
-      //ledcWrite(ledcs[motor], pwm);
-      digitalWrite(mPins[motor], HIGH);
+      ledcWrite(ledcs[motor], pwm);
+      //digitalWrite(mPins[motor], HIGH);
     }
   }
 }

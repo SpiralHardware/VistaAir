@@ -38,6 +38,8 @@ void setup() {
   int boardLed = 5;
   pinMode(boardLed, OUTPUT);
   digitalWrite(boardLed, LOW);// Turn off on-board blue led
+  pinMode(16, OUTPUT);
+  digitalWrite(16, HIGH);// Turn off on-board blue led
 
 }
 
