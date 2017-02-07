@@ -53,13 +53,15 @@ void setup(void) {
   {
     pinMode(inApin[i], OUTPUT);
     pinMode(inBpin[i], OUTPUT);
+    pinMode(pwmpin[i], OUTPUT);
   }
   // Initialize braked
   for (int i=0; i<2; i++)
   {
     digitalWrite(inApin[i], LOW);
     digitalWrite(inBpin[i], LOW);
-    pinMode(ledcs[i], OUTPUT);
+    digitalWrite(pwmpin[i], LOW);
+    //pinMode(ledcs[i], OUTPUT);
   }
   
   
@@ -78,8 +80,8 @@ void setup(void) {
   //Serial.println("try motor go");
  // motorGo(1, CW, 255);
 
-  WiFi.mode(WIFI_AP);
-  WiFi.softAP(WIFI_SSID);
+  //WiFi.mode(WIFI_AP);
+  //WiFi.softAP(WIFI_SSID);
   
   delay(2000); 
   uint8_t MAC_array[6];
@@ -107,7 +109,7 @@ void motorOff(int motor)
     digitalWrite(inBpin[i], LOW);
   }
   //ledcWrite(ledcs[motor], 0);
-   digitalWrite(mPins[motor], LOW);
+   digitalWrite(pwmpin[motor], LOW);
 }
 
 /* motorGo() will set a motor going in a specific direction
@@ -145,7 +147,7 @@ void motorGo(uint8_t motor, uint8_t direct, uint8_t pwm)
         digitalWrite(inBpin[motor], LOW);
 
       //ledcWrite(ledcs[motor], pwm);
-      digitalWrite(mPins[motor], HIGH);
+      digitalWrite(pwmpin[motor], HIGH);
     }
   }
 }
@@ -163,7 +165,7 @@ void handleRequest(String request) {
   
   Serial.printf("Connecting to %s with %s\n", ssid.c_str(), password.c_str());
   
-  WiFi.mode(WIFI_STA);
+  //WiFi.mode(WIFI_STA);
   isAP = false;
   WiFi.begin(ssid.c_str(), password.c_str());
 
