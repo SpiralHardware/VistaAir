@@ -13,9 +13,9 @@
 #define CCW  2
 
 
-int inApin[2] = {25, 14};  // INA: Clockwise input
-int inBpin[2] = {33, 32}; // INB: Counter-clockwise input
-int pwmpin[2] = {27, 26}; // PWM input
+int inApin[2] = {26, 13};  // INA: Clockwise input
+int inBpin[2] = {25, 33}; // INB: Counter-clockwise input
+int pwmpin[2] = {14, 27A}; // PWM input
 //int inApin[2] = {7, 4};  // INA: Clockwise input
 //int inBpin[2] = {8, 9}; // INB: Counter-clockwise input
 //int pwmpin[2] = {5, 6}; // PWM input
@@ -24,8 +24,8 @@ int pwmpin[2] = {27, 26}; // PWM input
 // testing without pwm
 //int mPins[2] = {M1PIN, M2PIN};
 
-//int boardLed = 5;
-int boardLed = 12;
+int boardLed = 5;
+//int boardLed = 12;
   
 void setup(void) {
 
