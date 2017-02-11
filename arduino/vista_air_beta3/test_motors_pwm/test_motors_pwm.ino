@@ -5,27 +5,27 @@
 #include <stddef.h>
 
 
-#define M1PIN 27
-#define M2PIN 26
+#define M1PIN 14
+#define M2PIN 27
 #define M1CHANNEL 1
 #define M2CHANNEL 2
 #define CW   1
 #define CCW  2
 
 
-//int inApin[2] = {26, 13};  // INA: Clockwise input
-//int inBpin[2] = {25, 33}; // INB: Counter-clockwise input
+int inApin[2] = {26, 13};  // INA: Clockwise input
+int inBpin[2] = {25, 33}; // INB: Counter-clockwise input
 //int pwmpin[2] = {14, 27}; // PWM input
-int inApin[2] = {7, 4};  // INA: Clockwise input
-int inBpin[2] = {8, 9}; // INB: Counter-clockwise input
-int pwmpin[2] = {5, 6}; // PWM input
+//int inApin[2] = {7, 4};  // INA: Clockwise input
+//int inBpin[2] = {8, 9}; // INB: Counter-clockwise input
+//int pwmpin[2] = {5, 6}; // PWM input
 
-//int ledcs[2] = {M1CHANNEL, M2CHANNEL}; // PWM input
+int ledcs[2] = {M1CHANNEL, M2CHANNEL}; // PWM input
 // testing without pwm
 //int mPins[2] = {M1PIN, M2PIN};
 
-//int boardLed = 5;
-int boardLed = 12;
+int boardLed = 5;
+//int boardLed = 12;
   
 void setup(void) {
 
@@ -37,30 +37,31 @@ void setup(void) {
   pinMode(boardLed, OUTPUT);
   digitalWrite(boardLed, LOW);// Turn off on-board blue led
   
+  
+  // assign pwm pins to ledc channels
+  ledcAttachPin(M1PIN, M1CHANNEL);
+  ledcAttachPin(M2PIN, M2CHANNEL);
+
+  // intialise the ledc channels
+  ledcSetup(M1CHANNEL, 500, 8); // 500Hz PWM, 8-bit resolution
+  ledcSetup(M2CHANNEL, 500, 8);
+  
   // Initialize digital pins as outputs
   for (int i=0; i<2; i++)
   {
     pinMode(inApin[i], OUTPUT);
     pinMode(inBpin[i], OUTPUT);
-    pinMode(pwmpin[i], OUTPUT);
+   // pinMode(pwmpin[i], OUTPUT);
   }
   // Initialize braked
   for (int i=0; i<2; i++)
   {
     digitalWrite(inApin[i], LOW);
     digitalWrite(inBpin[i], LOW);
-    digitalWrite(pwmpin[i], LOW);
-    //pinMode(ledcs[i], OUTPUT);
+    //digitalWrite(pwmpin[i], LOW);
+    pinMode(ledcs[i], OUTPUT);
   }
   
-  
-  // assign pwm pins to ledc channels
-  //ledcAttachPin(M1PIN, M1CHANNEL);
- // ledcAttachPin(M2PIN, M2CHANNEL);
-
-  // intialise the ledc channels
-  //ledcSetup(M1CHANNEL, 500, 8); // 500Hz PWM, 8-bit resolution
-  //ledcSetup(M2CHANNEL, 500, 8);
 
   motorOff(0);
   motorOff(1);
@@ -79,8 +80,8 @@ void motorOff(int motor)
     digitalWrite(inApin[i], LOW);
     digitalWrite(inBpin[i], LOW);
   }
-  //ledcWrite(ledcs[motor], 0);
-   digitalWrite(pwmpin[motor], LOW);
+  ledcWrite(ledcs[motor], 0);
+   //digitalWrite(pwmpin[motor], LOW);
 }
 
 /* motorGo() will set a motor going in a specific direction
@@ -117,8 +118,8 @@ void motorGo(uint8_t motor, uint8_t direct, uint8_t pwm)
       else
         digitalWrite(inBpin[motor], LOW);
 
-      //ledcWrite(ledcs[motor], pwm);
-      digitalWrite(pwmpin[motor], HIGH);
+      ledcWrite(ledcs[motor], pwm);
+      //digitalWrite(pwmpin[motor], HIGH);
     }
   }
 }
