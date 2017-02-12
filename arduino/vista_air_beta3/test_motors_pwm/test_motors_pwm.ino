@@ -1,6 +1,6 @@
 
 // needed for hacked encoder library
-//#define ESP32 1
+#define ESP32 1
 #include <string.h>
 #include <stddef.h>
 
