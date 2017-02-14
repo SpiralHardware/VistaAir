@@ -27,11 +27,11 @@
 //   Best Performance: both pins have interrupt capability
 //   Good Performance: only the first pin has interrupt capability
 //   Low Performance:  neither pin has interrupt capability
-Encoder leftMotor(16, 17);
-Encoder rightMotor(18, 23);
+Encoder leftMotor(17, 16);
+Encoder rightMotor(23, 18);
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.printf("ok - setup done\n");
   delay(2000);
   Serial.println("turn off led");

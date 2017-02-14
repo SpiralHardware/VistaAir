@@ -14,12 +14,12 @@
 #define M2CHANNEL 2
 
 #define CLOCKWISE 1
-#define ANTICLOCKWISE 0
+#define ANTICLOCKWISE 2
 
 #define LEFT_MOTOR 0
 #define RIGHT_MOTOR 1
 
-#define SYNC_THRESHOLD 30
+#define SYNC_THRESHOLD 5
 #define SYNC_DIFF_LIMIT 1000
 
 #define PWM_MAX 255
@@ -181,12 +181,15 @@ void goMotorsForMs(int motorDir, int motorSpeed, long ms){
       }
     }
 
-    // 20 milliseconds seems like a reasonable amount of time to run the motors before
+    // 15 milliseconds seems like a reasonable amount of time to run the motors before
     // starting a new cycle to check if they are in synch 
-    delay(20); 
+    delay(15); 
   }
 }
 
+int newDirection = ANTICLOCKWISE;
+int currentDirection = CLOCKWISE;
+int swapDirection = CLOCKWISE;
 void loop(void) {
 
   Serial.println("testing motors");
@@ -208,8 +211,11 @@ void loop(void) {
   digitalWrite(boardLed, HIGH);
 
   // run both motors in synch for 15 seconds.
-  goMotorsForMs(CLOCKWISE, PWM_MAX, 15000);
-
+  goMotorsForMs(currentDirection, PWM_MAX, 15000);
+  swapDirection = currentDirection;
+  currentDirection = newDirection;
+  newDirection = swapDirection;
+  
   motorOff(0);
   motorOff(1);
   digitalWrite(boardLed, LOW);

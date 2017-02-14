@@ -89,9 +89,9 @@ public class WifiConfigActivity extends AppCompatActivity implements AdapterView
                    Anyway - upshot is, to work on android 6 and earlier versions, we have to scan the networks for ESP32 and
                    connect to him if he exists, or if not then we can create him.
 
-                   For later - when managine multiple VistaAirs, we will assume each one has a uniquely preconfigured
+                   For later - when managing multiple VistaAirs, we will assume each one has a uniquely preconfigured
                    SSID name, but that always starts with given Prefix - eg VistaAir - then we can just iterate through them
-                   to set up wifi connnections.
+                   to set up wifi connections.
                  */
                 List<WifiConfiguration> listConfig = wifiManager.getConfiguredNetworks();
                 WifiConfiguration tmpConfig;
@@ -143,6 +143,7 @@ public class WifiConfigActivity extends AppCompatActivity implements AdapterView
                 WifiInfo test = wifiManager.getConnectionInfo();
                 String clientIp = InetAddress.getByAddress(convert2Bytes(test.getIpAddress())).getHostAddress();
                 esp32Status = "Connected to ESP32 at : "+InetAddress.getByAddress(convert2Bytes(esp32AP.serverAddress)).getHostAddress();
+                CharSequence debugStr = esp32Status;
             } catch (Exception e) {
                 int dammit = 0;
             }
@@ -174,11 +175,13 @@ public class WifiConfigActivity extends AppCompatActivity implements AdapterView
                 HttpURLConnection urlConnection = null;
                 byte[] ipAddress = convert2Bytes(esp32AP.serverAddress);
                 try {
-                    // using Dhcp to get ip address of the ESP32 does not appear to work at the moment,
-                    // so hopefully hardcoding to 168.4.1.1 will do the trick for nowl
                     String apIpAddr = InetAddress.getByAddress(convert2Bytes(esp32AP.serverAddress)).getHostAddress();
                     //URL url = new URL("http://"+apIpAddr+"/"+_ssid+"/"+_password+"/blah");
+
+                    // at one point using Dhcp to get ip address of the ESP32 AP seemed to work -
+                    // but then it didn't so back to hardcoding to 192.168.4.1
                     URL url = new URL("http://192.168.4.1/"+_ssid+"/"+_password+"/blah");
+
                     urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
                     InputStreamReader isw = new InputStreamReader(in);
@@ -206,12 +209,10 @@ public class WifiConfigActivity extends AppCompatActivity implements AdapterView
     ArrayList<String> ssidList = new ArrayList<String>();
 
     class WifiReceiver extends BroadcastReceiver{
-        private WifiManager wm;
         private ArrayAdapter aa;
 
-        public WifiReceiver(WifiManager wmarg, ArrayAdapter adaptorArg){
+        public WifiReceiver(ArrayAdapter adaptorArg){
             super();
-            wm = wmarg;
             aa = adaptorArg;
         }
         @Override
@@ -221,13 +222,19 @@ public class WifiConfigActivity extends AppCompatActivity implements AdapterView
             ssidList.clear();
             aa.notifyDataSetChanged();
 
+            //     #########
+            // !!! NOTA BENE !!!
+            //     #########
+            // For wifi scan to work - phone MUST have Location setting ON =- otherwise scan results are empty set
+            // argh !!! talk about invisible failure. Even with permissions enabled etc... must also have phone with Location switched on.
+           WifiManager wm =  (WifiManager) getSystemService(WIFI_SERVICE);
             List<ScanResult> scannedAPs = wm.getScanResults();
             Iterator<ScanResult> eachAP = scannedAPs.iterator();
             while(eachAP.hasNext()){
                 ScanResult ap = eachAP.next();
                 ssidList.add(ap.SSID);
 
-                // can't just have am updatable drop down without reciprocating call-backs - god I hate modern code
+                // can't just have an updatable drop down without reciprocating call-backs - god I hate modern code
                 // this is the call back that's called after the call back that was triggered from startScan.
                 // When scan results are in, and the wifi receiver processes the results and adds to the local AP
                 // list in the SSID drop down, for each item we add, we have to add a call back to the list to
@@ -235,6 +242,7 @@ public class WifiConfigActivity extends AppCompatActivity implements AdapterView
                 aa.notifyDataSetChanged();
             }
 
+            // comment below is for old code
             // so apparently we get get multiple call backs from wifi.startScan
             // which means we're updating the drop down many times, which is apparently a no-no
             // outside of the UI thread, see here : http://stackoverflow.com/questions/3132021/android-listview-illegalstateexception-the-content-of-the-adapter-has-changed
@@ -261,19 +269,25 @@ public class WifiConfigActivity extends AppCompatActivity implements AdapterView
         // and this one with a defence which is quite good, but I would still stone the fucker https://code.google.com/p/android/issues/detail?id=231911&thanks=231911&ts=1484077807
         // WTF has "location" got to do with looking and connecting to wifi???
         // this is security concerns over idiotic trifles wagging the dog ... entropic heat death happens to all systems it seems...
-        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 0x12345);
+        requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 0x1234B);
 
         ssidSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ssidSelect.setAdapter(ssidSpinnerAdapter);
         ssidSelect.setOnItemSelectedListener(this);
 
+        //     #########
+        // !!! NOTA BENE !!!
+        //     #########
+        // For wifi scan to work - phone MUST have location ON =- otherwise scan results are empty set
+        // argh !!!  even with permissions enabled etc... must also have phone with Location switched on.
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
 
         // callback for results of wifi scan
-        registerReceiver(new WifiReceiver(wifiManager, ssidSpinnerAdapter), new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-
-        // start the scan
+        IntentFilter mIntentFilter = new IntentFilter();
+        mIntentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
+        registerReceiver(new WifiReceiver(ssidSpinnerAdapter), mIntentFilter);
         wifiManager.startScan();
+
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
