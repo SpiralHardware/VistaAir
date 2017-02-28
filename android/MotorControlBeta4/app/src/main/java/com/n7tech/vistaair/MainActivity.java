@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 HttpURLConnection urlConnection = null;
                 try {
-                    URL url = new URL("http://"+esp32address+":motorCommandPort/"+command+"/blah");
+                    URL url = new URL("http://"+esp32address+":"+motorCommandPort+"/"+command+"/blah");
                     urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
                     InputStreamReader isw = new InputStreamReader(in);
