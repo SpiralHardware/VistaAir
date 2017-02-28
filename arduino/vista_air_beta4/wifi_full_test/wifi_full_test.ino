@@ -333,6 +333,8 @@ void loop(void) {
         } else if(motorServer){
           Serial.println("waiting for motor command");          
         }
+        Serial.println("left motor counter is"); 
+        Serial.println(leftMotor.read());
         waitingMessage = false;
       } else if (timeModulo >= 20) {
         waitingMessage = true;

@@ -39,7 +39,7 @@ import java.net.URL;
 // like so http://esp32-address/up/blah - http://esp32-address/stop/blah - http://esp32-address/down/blah
 //
 public class MainActivity extends AppCompatActivity {
-
+    Integer motorCommandPort = 61;
     String esp32address = null;
 
 
@@ -82,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         String checkIp = localNetworkIpRoot + "." + i;
                         Socket socket = new Socket();
-                        SocketAddress socketAddress = new InetSocketAddress(checkIp, 60);
+                        SocketAddress socketAddress = new InetSocketAddress(checkIp, motorCommandPort);
 
-                        socket.connect(socketAddress, 60);
+                        socket.connect(socketAddress, motorCommandPort);
                         if (socket.isConnected()) {
                             // gottim - store the IP to send motor commands to
                             esp32address = checkIp;
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 HttpURLConnection urlConnection = null;
                 try {
-                    URL url = new URL("http://"+esp32address+":60/"+command+"/blah");
+                    URL url = new URL("http://"+esp32address+":motorCommandPort/"+command+"/blah");
                     urlConnection = (HttpURLConnection) url.openConnection();
                     InputStream in = urlConnection.getInputStream();
                     InputStreamReader isw = new InputStreamReader(in);
