@@ -221,7 +221,7 @@
   #define CORE_INT32_PIN	32
   #define CORE_INT33_PIN	33
   #define CORE_INT34_PIN	34
-  #define CORE_INT34_PIN	35
+  #define CORE_INT35_PIN	35
   #define CORE_INT36_PIN	36
   #define CORE_INT37_PIN	37
   #define CORE_INT38_PIN	38
