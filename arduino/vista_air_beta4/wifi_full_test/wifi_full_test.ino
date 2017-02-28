@@ -140,10 +140,10 @@ void handleWifiSetupRequest(String request) {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-  // start http server on port 60 listening for requests with "stop" "up" and "down" in the url path
+  // start http server on port 61 listening for requests with "stop" "up" and "down" in the url path
   // but first delete the old one on port 80 that we used to get local AP credentials
   delete server;
-  server = new WiFiServer(60);
+  server = new WiFiServer(61);
   server->begin();
   motorServer = true;
 }
@@ -333,8 +333,6 @@ void loop(void) {
         } else if(motorServer){
           Serial.println("waiting for motor command");          
         }
-        Serial.println("left motor counter is"); 
-        Serial.println(leftMotor.read());
         waitingMessage = false;
       } else if (timeModulo >= 20) {
         waitingMessage = true;
